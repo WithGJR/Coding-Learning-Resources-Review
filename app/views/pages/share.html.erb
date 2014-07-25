@@ -1,0 +1,47 @@
+<script type="text/javascript" src="js/jquery.pagedown-bootstrap.combined.min.js"></script>
+ 
+<link href="css/jquery.pagedown-bootstrap.css" rel="stylesheet">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+<script type="text/javascript">
+(function () {
+	$("textarea#pagedownMe").pagedownBootstrap();
+})();
+</script>
+
+<div class="jumbotron">
+  <h1>Welcome!</h1>
+  <p>您想要尋找教材嗎？還是要分享自己發現的好教材給大家呢？</p>
+  <p><a href="/#find" ng-click="tabCtrl.selectedTab = 1" class="btn btn-primary btn-lg" role="button">尋找</a> or <a href="/#share" ng-click="tabCtrl.selectedTab = 2" class="btn btn-info btn-lg" role="button">分享</a></p>
+</div>
+
+<% if current_user.blank? %>
+  <div class="share-button center">
+    <a href="/users/auth/facebook" class="btn bnt-lg btn-primary break-line">按這裡登入後分享</a>
+  </div>
+<% else %>
+  <form id="post-form" name="postForm" ng-controller="PostController as postCtrl" ng-submit="postForm.$valid && postCtrl.create()" novalidate>
+    <div id="message">
+      <div ng-show="postCtrl.response.success"class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        {{postCtrl.response.message}}
+      </div>
+      <div ng-show="postCtrl.response.success === false"class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        {{postCtrl.response.message}}
+      </div>
+    </div>
+
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">網址</span>
+      <input ng-model="postCtrl.post.url" type="url" class="form-control" placeholder="請輸入URL...（請輸入一個就好）" required>
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">標題</span>
+      <input ng-model="postCtrl.post.title" type="text" class="form-control" placeholder="例如： CodeSchool 的 XXX 課程" required>
+    </div>
+    
+    <textarea rows="25" ng-model="postCtrl.post.description" class="form-control" id="pagedownMe" placeholder="請簡述你推薦這個學習資源的理由"  required></textarea>
+    <input type="submit" class="btn btn-lg btn-primary break-line" value="確認分享">
+  </form>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="post-container">
+  <article ng-controller="ReadPostController as readPostCtrl">
+    <div class="panel panel-default">
+      <header class="panel-heading"><h1>{{readPostCtrl.post.title}}</h1></header>
+        <div class="panel-body">
+          <ul>
+            <li>網址： <a href="{{readPostCtrl.post.url}}" target="_blank">{{readPostCtrl.post.url}}</a></li>
+            <li>分享人： {{readPostCtrl.post.author_name}} | <img src="{{readPostCtrl.post.author_image}}" /></li>
+          </ul>
+          <div ng-bind-html="readPostCtrl.post.description"></div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+

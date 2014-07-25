@@ -1,0 +1,66 @@
+@import "bootstrap";
+
+#wrapper {
+  width: 100%;
+}
+
+#main {
+  width: 90%;
+  margin: 0 auto;
+}
+.page-header {
+  text-align: center;
+}
+
+.input-group {
+  margin: 25px auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.share-button {
+  margin: 20px auto;
+}
+
+.post-container {
+  width: 100%;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+#post-form {
+  .break-line {
+    margin: 10px 0 10px 0;
+  }
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty {
+  border-color: #78FA89;
+}
+
+#footer {
+  width: 85%;
+  height: 20%;
+
+  margin: 0 auto;
+  padding-top: 10px;
+  border-top: 1px solid #DDDDDD;
+
+  text-align: center;
+
+  p {
+   color: #AAAAAA;
+   
+   a {
+    color: #000000;
+   }
+  }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="review">
+<head>
+  <title>Coding 學習資源評論網</title>
+  <meta content="讓你事半功倍、輕鬆找到學習 Coding 的好教材。" name="description">
+  <meta content="Coding 學習資源評論網" property="og:title">
+  <meta content="讓你事半功倍、輕鬆找到學習 Coding 的好教材。" property="og:description">
+  <meta content="<%= root_url %>" property="og:url">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= render 'layouts/google' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrapper">
+  <div id="main" ng-controller="TabController as tabCtrl">
+    <%= render 'layouts/header' %>
+		<% flash.each do |key, value| %>
+			<% case key %>
+			<% when "notice" %>
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= value %>
+				</div>
+			<% when "alert" %>
+				<div class="alert alert-warning alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= value %>
+				</div>
+			<% else %>
+				<div class="alert alert-info alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<%= value %>
+				</div>
+			<% end %>
+		<% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
+</div>
+</body>
+</html>

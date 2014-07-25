@@ -1,0 +1,28 @@
+<div id="message">
+</div>
+
+<table class="table" ng-controller="DeletePostController as deletePostCtrl">
+	<thread>
+		<tr>
+			<td>標題</td>
+			<td> # </td>
+		</tr>
+	</thread>
+
+	<tbody ng-controller="ManagePostController as managePostCtrl">
+    <tr ng-repeat="post in managePostCtrl.posts">
+      <td>{{post.title}}</td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Action <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/#posts/{{post.id}}/edit">編輯</a></li>
+            <li><a href="" id="{{post.id}}" ng-click="<%= 'deletePostCtrl.delete(post.id)' %>">刪除</a></li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+	</tbody>
+</table>
